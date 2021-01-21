@@ -21,7 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class ACVoltageElm extends VoltageElm {
-	public ACVoltageElm(int xx, int yy) { super(xx, yy, WF_AC); }
-	Class getDumpClass() { return VoltageElm.class; }
+class ACVoltageElm extends VoltageElm {
+    public ACVoltageElm(int xx, int yy) {
+        super(xx, yy, WF_AC);
     }
+
+    Class getDumpClass() {
+        return VoltageElm.class;
+    }
+}

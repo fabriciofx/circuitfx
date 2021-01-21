@@ -21,13 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class NJfetElm extends JfetElm {
-	public NJfetElm(int xx, int yy) { super(xx, yy, false); }
-	Class getDumpClass() { return JfetElm.class; }
+class NJfetElm extends JfetElm {
+    public NJfetElm(int xx, int yy) {
+        super(xx, yy, false);
     }
 
-    class PJfetElm extends JfetElm {
-	public PJfetElm(int xx, int yy) { super(xx, yy, true); }
-	Class getDumpClass() { return JfetElm.class; }
+    Class getDumpClass() {
+        return JfetElm.class;
     }
+}
+
+class PJfetElm extends JfetElm {
+    public PJfetElm(int xx, int yy) {
+        super(xx, yy, true);
+    }
+
+    Class getDumpClass() {
+        return JfetElm.class;
+    }
+}
 

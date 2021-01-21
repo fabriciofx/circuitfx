@@ -21,14 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import java.awt.*;
-import java.awt.event.*;
 
 public interface ImportExportDialog {
-    public enum Action { IMPORT, EXPORT };
-
-    public void setDump(String dump);
-
-    public void execute();
+    void setDump(String dump);
+    void execute();
+    enum Action {
+        IMPORT,
+        EXPORT
+    }
 }
 

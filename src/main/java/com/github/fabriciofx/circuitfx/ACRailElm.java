@@ -21,8 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class ACRailElm extends RailElm {
-	public ACRailElm(int xx, int yy) { super(xx, yy, WF_AC); }
-	Class getDumpClass() { return RailElm.class; }
-	int getShortcut() { return 0; }
+class ACRailElm extends RailElm {
+    public ACRailElm(int xx, int yy) {
+        super(xx, yy, WF_AC);
     }
+
+    Class getDumpClass() {
+        return RailElm.class;
+    }
+
+    int getShortcut() {
+        return 0;
+    }
+}

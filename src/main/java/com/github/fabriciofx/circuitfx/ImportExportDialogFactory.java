@@ -21,13 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-public class ImportExportDialogFactory
-{
-    public static ImportExportDialog Create(CirSim f,
-	ImportExportDialog.Action type)
-    {
-	if (f.applet != null)
-	{
+public class ImportExportDialogFactory {
+    public static ImportExportDialog Create(
+        CirSim f,
+        ImportExportDialog.Action type
+    ) {
+        if (f.applet != null) {
 /*
 	    try
 	    {
@@ -38,11 +37,9 @@ public class ImportExportDialogFactory
 		return new ImportExportClipboardDialog(f, type);
 	    }
 */
-		return new ImportExportClipboardDialog(f, type);
-	}
-	else
-	{
-	    return new ImportExportFileDialog(f, type);
-	}
+            return new ImportExportClipboardDialog(f, type);
+        } else {
+            return new ImportExportFileDialog(f, type);
+        }
     }
 }

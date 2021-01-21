@@ -21,7 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class NMosfetElm extends MosfetElm {
-	public NMosfetElm(int xx, int yy) { super(xx, yy, false); }
-	Class getDumpClass() { return MosfetElm.class; }
+class NMosfetElm extends MosfetElm {
+    public NMosfetElm(int xx, int yy) {
+        super(xx, yy, false);
     }
+
+    Class getDumpClass() {
+        return MosfetElm.class;
+    }
+}

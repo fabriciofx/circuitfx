@@ -21,10 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class OpAmpSwapElm extends OpAmpElm {
-	public OpAmpSwapElm(int xx, int yy) {
-	    super(xx, yy);
-	    flags |= FLAG_SWAP;
-	}
-	Class getDumpClass() { return OpAmpElm.class; }
+class OpAmpSwapElm extends OpAmpElm {
+    public OpAmpSwapElm(int xx, int yy) {
+        super(xx, yy);
+        flags |= FLAG_SWAP;
     }
+
+    Class getDumpClass() {
+        return OpAmpElm.class;
+    }
+}

@@ -21,8 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class SquareRailElm extends RailElm {
-	public SquareRailElm(int xx, int yy) { super(xx, yy, WF_SQUARE); }
-	Class getDumpClass() { return RailElm.class; }
-	int getShortcut() { return 0; }
+class SquareRailElm extends RailElm {
+    public SquareRailElm(int xx, int yy) {
+        super(xx, yy, WF_SQUARE);
     }
+
+    Class getDumpClass() {
+        return RailElm.class;
+    }
+
+    int getShortcut() {
+        return 0;
+    }
+}

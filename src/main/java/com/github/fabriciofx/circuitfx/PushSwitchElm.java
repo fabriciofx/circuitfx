@@ -21,8 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class PushSwitchElm extends SwitchElm {
-	public PushSwitchElm(int xx, int yy) { super(xx, yy, true); }
-	Class getDumpClass() { return SwitchElm.class; }
-	int getShortcut() { return 0; }
+class PushSwitchElm extends SwitchElm {
+    public PushSwitchElm(int xx, int yy) {
+        super(xx, yy, true);
     }
+
+    Class getDumpClass() {
+        return SwitchElm.class;
+    }
+
+    int getShortcut() {
+        return 0;
+    }
+}

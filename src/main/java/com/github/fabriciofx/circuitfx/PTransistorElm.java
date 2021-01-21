@@ -21,7 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-    class PTransistorElm extends TransistorElm {
-	public PTransistorElm(int xx, int yy) { super(xx, yy, true); }
-	Class getDumpClass() { return TransistorElm.class; }
+class PTransistorElm extends TransistorElm {
+    public PTransistorElm(int xx, int yy) {
+        super(xx, yy, true);
     }
+
+    Class getDumpClass() {
+        return TransistorElm.class;
+    }
+}
