@@ -80,7 +80,6 @@ class Diode {
                 vnew = vt * Math.log(vnew / vt);
             }
             sim.converged = false;
-            //System.out.println(vnew + " " + oo + " " + vold);
         } else if (vnew < 0 && zoffset != 0) {
             // for Zener breakdown, use the same logic but translate the values
             vnew = -vnew - zoffset;
@@ -92,7 +91,6 @@ class Diode {
                         vnew = vold + vt * Math.log(arg);
                         double v0 = Math.log(1e-6 / leakage) * vt;
                         vnew = Math.max(v0, vnew);
-                        //System.out.println(oo + " " + vnew);
                     } else {
                         vnew = vcrit;
                     }
@@ -133,7 +131,6 @@ class Diode {
             sim.stampCurrentSource(nodes[0], nodes[1], nc);
         } else {
             // Zener diode
-
             /*
              * I(Vd) = Is * (exp[Vd*C] - exp[(-Vd-Vz)*C] - 1 )
              *

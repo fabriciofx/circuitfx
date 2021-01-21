@@ -82,7 +82,6 @@ class LogicOutputElm extends CircuitElm {
     void draw(Graphics g) {
         Font f = new Font("SansSerif", Font.BOLD, 20);
         g.setFont(f);
-        //g.setColor(needsHighlight() ? selectColor : lightGrayColor);
         g.setColor(lightGrayColor);
         String s = (volts[0] < threshold) ? "L" : "H";
         if (isTernary()) {

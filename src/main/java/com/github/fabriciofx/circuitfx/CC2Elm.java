@@ -70,7 +70,6 @@ class CC2Elm extends ChipElm {
         arr[3] = "I = " + getCurrentText(pins[0].current);
     }
 
-    //boolean nonLinear() { return true; }
     void stamp() {
         // X voltage = Y voltage
         sim.stampVoltageSource(0, nodes[0], pins[0].voltSource);

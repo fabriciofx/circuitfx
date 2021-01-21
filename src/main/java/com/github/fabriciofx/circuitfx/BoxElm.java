@@ -40,14 +40,6 @@ class BoxElm extends GraphicElm {
         super(xa, ya, xb, yb, f);
         x2 = xb;
         y2 = yb;
-/*	if ( st.hasMoreTokens() )
-		x = new Integer(st.nextToken()).intValue();
-	if ( st.hasMoreTokens() )
-		y = new Integer(st.nextToken()).intValue();
-	if ( st.hasMoreTokens() )
-		x2 = new Integer(st.nextToken()).intValue();
-	if ( st.hasMoreTokens() )
-		y2 = new Integer(st.nextToken()).intValue();*/
         setBbox(x, y, x2, y2);
     }
 
@@ -65,7 +57,6 @@ class BoxElm extends GraphicElm {
     }
 
     void draw(Graphics g) {
-        //g.setColor(needsHighlight() ? selectColor : lightGrayColor);
         g.setColor(needsHighlight() ? selectColor : Color.GRAY);
         setBbox(x, y, x2, y2);
         if (x < x2 && y < y2) {

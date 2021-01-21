@@ -196,11 +196,6 @@ class TransLineElm extends CircuitElm {
         }
         voltageL[ptr] = volts[2] - volts[0] + volts[2] - volts[4];
         voltageR[ptr] = volts[3] - volts[1] + volts[3] - volts[5];
-        //System.out.println(volts[2] + " " + volts[0] + " " +
-        // (volts[2]-volts[0]) + " " + (imped*current1) + " " + voltageL[ptr]);
-	/*System.out.println("sending fwd  " + currentL[ptr] + " " + current1);
-	  System.out.println("sending back " + currentR[ptr] + " " + current2);*/
-        //System.out.println("sending back " + voltageR[ptr]);
         ptr = (ptr + 1) % lenSteps;
     }
 
@@ -231,7 +226,6 @@ class TransLineElm extends CircuitElm {
         return posts[n];
     }
 
-    //double getVoltageDiff() { return volts[0]; }
     int getVoltageSourceCount() {
         return 2;
     }
@@ -242,11 +236,6 @@ class TransLineElm extends CircuitElm {
 
     boolean getConnection(int n1, int n2) {
         return false;
-	/*if (comparePair(n1, n2, 0, 1))
-	  return true;
-	  if (comparePair(n1, n2, 2, 3))
-	  return true;
-	  return false;*/
     }
 
     void getInfo(String[] arr) {

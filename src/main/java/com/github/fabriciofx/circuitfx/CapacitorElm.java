@@ -134,8 +134,6 @@ class CapacitorElm extends CircuitElm {
         } else {
             curSourceValue = -voltdiff / compResistance;
         }
-        //System.out.println("cap " + compResistance + " " + curSourceValue +
-        // " " + current + " " + voltdiff);
     }
 
     void calculateCurrent() {
@@ -157,8 +155,6 @@ class CapacitorElm extends CircuitElm {
         getBasicInfo(arr);
         arr[3] = "C = " + getUnitText(capacitance, "F");
         arr[4] = "P = " + getUnitText(getPower(), "W");
-        //double v = getVoltageDiff();
-        //arr[4] = "U = " + getUnitText(.5*capacitance*v*v, "J");
     }
 
     public EditInfo getEditInfo(int n) {

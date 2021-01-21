@@ -49,11 +49,6 @@ class ImportExportClipboardDialog
         cframe = f;
         setLayout(new ImportExportDialogLayout());
         add(text = new TextArea("", 10, 60, TextArea.SCROLLBARS_BOTH));
-/*
-	if (type == Action.EXPORT)
-	    importButton = new Button("Copy to clipboard");
-	else
-*/
         importButton = new Button("Import");
         this.type = type;
         add(importButton);
@@ -84,19 +79,7 @@ class ImportExportClipboardDialog
         int i;
         Object src = e.getSource();
         if (src == importButton) {
-/*
-	    if (clipboard == null)
-		clipboard = getToolkit().getSystemClipboard();
-	    if ( type == Action.EXPORT )
-	    {
-		StringSelection data = new StringSelection(text.getText());
-		clipboard.setContents(data, data);
-	    }
-	    else
-*/
-            {
-                cframe.readSetup(text.getText());
-            }
+            cframe.readSetup(text.getText());
         }
         if (src == closeButton) {
             setVisible(false);

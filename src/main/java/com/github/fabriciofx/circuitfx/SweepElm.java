@@ -89,7 +89,6 @@ class SweepElm extends CircuitElm {
         int xl = 10;
         int ox = -1, oy = -1;
         long tm = System.currentTimeMillis();
-        //double w = (this == mouseElm ? 3 : 2);
         tm %= 2000;
         if (tm > 1000) {
             tm = 2000 - tm;

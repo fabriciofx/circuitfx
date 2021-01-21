@@ -215,11 +215,7 @@ class TriacElm extends CircuitElm {
         diode.doStep(volts[inode] - volts[gnode]);
         double icmult = 1 / triggerI;
         double iamult = 1 / holdingI - icmult;
-        //System.out.println(icmult + " " + iamult);
         aresistance = (-icmult * ic + ia * iamult > 1) ? .0105 : 10e5;
-        //System.out.println(vac + " " + vag + " " + sim.converged + " " + ic
-        // + " " + ia + " " + aresistance + " " + volts[inode] + " " +
-        // volts[gnode] + " " + volts[anode]);
         sim.stampResistor(nodes[anode], nodes[inode], aresistance);
     }
 

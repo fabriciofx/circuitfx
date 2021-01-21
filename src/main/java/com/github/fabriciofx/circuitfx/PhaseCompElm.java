@@ -75,7 +75,6 @@ class PhaseCompElm extends ChipElm {
             ff1 = ff2 = false;
         }
         double out = (ff1) ? 5 : (ff2) ? 0 : -1;
-        //System.out.println(out + " " + v1 + " " + v2);
         if (out != -1) {
             sim.stampVoltageSource(0, nodes[2], pins[2].voltSource, out);
         } else {

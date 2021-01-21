@@ -116,7 +116,6 @@ class ResistorElm extends CircuitElm {
 
     void calculateCurrent() {
         current = (volts[0] - volts[1]) / resistance;
-        //System.out.print(this + " res current set to " + current + "\n");
     }
 
     void stamp() {

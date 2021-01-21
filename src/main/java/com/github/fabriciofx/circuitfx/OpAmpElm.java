@@ -191,17 +191,12 @@ class OpAmpElm extends CircuitElm {
         } else {
             dx = gain;
         }
-        //System.out.println("opamp " + vd + " " + volts[2] + " " + dx + " "
-        // + x + " " + lastvd + " " + sim.converged);
         // newton-raphson
         sim.stampMatrix(vn, nodes[0], dx);
         sim.stampMatrix(vn, nodes[1], -dx);
         sim.stampMatrix(vn, nodes[2], 1);
         sim.stampRightSide(vn, x);
         lastvd = vd;
-	    /*if (sim.converged)
-	      System.out.println((volts[1]-volts[0]) + " " + volts[2] + " " +
-	      initvd);*/
     }
 
     // there is no current path through the op-amp inputs, but there

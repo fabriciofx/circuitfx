@@ -129,7 +129,6 @@ class PotElm extends CircuitElm implements AdjustmentListener {
         calcLeads(bodyLen);
         position = slider.getValue() * .0099 + .005;
         int soff = (int) ((position - .5) * bodyLen);
-        //int offset2 = offset - sign(offset)*4;
         post3 = interpPoint(point1, point2, .5, offset);
         corner2 = interpPoint(point1, point2, soff / dn + .5, offset);
         arrowPoint = interpPoint(point1, point2, soff / dn + .5,

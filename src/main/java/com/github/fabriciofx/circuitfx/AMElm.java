@@ -58,10 +58,6 @@ class AMElm extends CircuitElm {
     int getDumpType() {
         return 200;
     }
-    /*void setCurrent(double c) {
-      current = c;
-      System.out.print("v current set to " + c + "\n");
-      }*/
 
     String dump() {
         return super.dump() + " " + carrierfreq + " " + signalfreq + " " +

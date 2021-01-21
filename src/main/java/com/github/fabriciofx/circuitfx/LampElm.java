@@ -148,7 +148,6 @@ class LampElm extends CircuitElm {
 
     void calculateCurrent() {
         current = (volts[0] - volts[1]) / resistance;
-        //System.out.print(this + " res current set to " + current + "\n");
     }
 
     void stamp() {
@@ -171,11 +170,9 @@ class LampElm extends CircuitElm {
         double cap = 1.57e-4 * nom_pow;
         double capw = cap * warmTime / .4;
         double capc = cap * coolTime / .4;
-        //System.out.println(nom_r + " " + (resistance/nom_r));
         temp += getPower() * sim.timeStep / capw;
         double cr = 2600 / nom_pow;
         temp -= sim.timeStep * (temp - roomTemp) / (capc * cr);
-        //System.out.println(capw + " " + capc + " " + temp + " " +resistance);
     }
 
     void doStep() {

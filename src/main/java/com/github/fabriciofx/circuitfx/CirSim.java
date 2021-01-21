@@ -441,10 +441,6 @@ public class CirSim extends Frame
         inputMenu.add(getClassCheckItem("Add LED", "LEDElm"));
         inputMenu.add(getClassCheckItem("Add Lamp (beta)", "LampElm"));
         inputMenu.add(getClassCheckItem("Add LED Matrix", "LEDMatrixElm"));
-        //inputMenu.add(getClassCheckItem("Add Microphone Input",
-        // "SignalInElm"));
-        //inputMenu.add(getClassCheckItem("Add Speaker Output",
-        // "SignalOutElm"));
         Menu activeMenu = new Menu("Active Components");
         mainMenu.add(activeMenu);
         activeMenu.add(getClassCheckItem("Add Diode", "DiodeElm"));
@@ -493,15 +489,8 @@ public class CirSim extends Frame
             "InvertingSchmittElm"
         ));
         activeMenu.add(getClassCheckItem("Add SCR", "SCRElm"));
-        //activeMenu.add(getClassCheckItem("Add Varactor/Varicap",
-        // "VaractorElm"));
         activeMenu.add(getClassCheckItem("Add Tunnel Diode", "TunnelDiodeElm"));
         activeMenu.add(getClassCheckItem("Add Triode", "TriodeElm"));
-        //activeMenu.add(getClassCheckItem("Add Diac", "DiacElm"));
-        //activeMenu.add(getClassCheckItem("Add Triac", "TriacElm"));
-        //activeMenu.add(getClassCheckItem("Add Photoresistor",
-        // "PhotoResistorElm"));
-        //activeMenu.add(getClassCheckItem("Add Thermistor", "ThermistorElm"));
         activeMenu.add(getClassCheckItem("Add CCII+", "CC2Elm"));
         activeMenu.add(getClassCheckItem("Add CCII-", "CC2NegElm"));
         Menu gateMenu = new Menu("Logic Gates");
@@ -577,7 +566,6 @@ public class CirSim extends Frame
         main.add(resetButton = new Button("Reset"));
         resetButton.addActionListener(this);
         dumpMatrixButton = new Button("Dump Matrix");
-        //main.add(dumpMatrixButton);
         dumpMatrixButton.addActionListener(this);
         stoppedCheck = new Checkbox("Stopped");
         stoppedCheck.addItemListener(this);
@@ -615,7 +603,6 @@ public class CirSim extends Frame
         }
         setGrid();
         elmList = new Vector<CircuitElm>();
-        //	setupList = new Vector();
         undoStack = new Vector<String>();
         redoStack = new Vector<String>();
         scopes = new Scope[20];
@@ -802,8 +789,6 @@ public class CirSim extends Frame
         }
         dbimage = main.createImage(winSize.width, winSize.height);
         int h = winSize.height / 5;
-	/*if (h < 128 && winSize.height > 300)
-	  h = 128;*/
         circuitArea = new Rectangle(0, 0, winSize.width, winSize.height - h);
         int i;
         int minx = 1000, maxx = 0, miny = 1000, maxy = 0;
@@ -930,8 +915,6 @@ public class CirSim extends Frame
             if (powerCheckItem.getState()) {
                 g.setColor(Color.gray);
             }
-	    /*else if (conductanceCheckItem.getState())
-	      g.setColor(Color.white);*/
             getElm(i).draw(g);
         }
         if (tempMouseMode == MODE_DRAG_ROW ||
@@ -975,10 +958,6 @@ public class CirSim extends Frame
                 }
             }
         }
-	/*if (mouseElm != null) {
-	    g.setFont(oldfont);
-	    g.drawString("+", mouseElm.x+10, mouseElm.y);
-	    }*/
         if (dragElm != null &&
             (dragElm.x != dragElm.x2 || dragElm.y != dragElm.y2)) {
             dragElm.draw(g);
@@ -1009,12 +988,6 @@ public class CirSim extends Frame
                             "V"
                         );
                 }
-		/* //shownodes
-		for (i = 0; i != mouseElm.getPostCount(); i++)
-		    info[0] += " " + mouseElm.nodes[i];
-		if (mouseElm.getVoltageSourceCount() > 0)
-		    info[0] += ";" + (mouseElm.getVoltageSource()+nodeList.size());
-		*/
             } else {
                 CircuitElm.showFormat.setMinimumFractionDigits(2);
                 info[0] = "t = " + CircuitElm.getUnitText(t, "s");
@@ -1064,13 +1037,6 @@ public class CirSim extends Frame
         }
         mouseElm = realMouseElm;
         frames++;
-	/*
-	g.setColor(Color.white);
-	g.drawString("Framerate: " + framerate, 10, 10);
-	g.drawString("Steprate: " + steprate,  10, 30);
-	g.drawString("Steprate/iter: " + (steprate/getIterCount()),  10, 50);
-	g.drawString("iterc: " + (getIterCount()),  10, 70);
-	*/
         realg.drawImage(dbimage, 0, 0, this);
         if (!stoppedCheck.getState() && circuitMatrix != null) {
             // Limit to 50 fps (thanks to Jurgen Klotzer for this)
@@ -1322,7 +1288,6 @@ public class CirSim extends Frame
             cn.x = cn.y = -1;
             nodeList.addElement(cn);
         }
-        //System.out.println("ac2");
         // allocate nodes and voltage sources
         for (i = 0; i != elmList.size(); i++) {
             CircuitElm ce = getElm(i);
@@ -1378,7 +1343,6 @@ public class CirSim extends Frame
         voltageSources = new CircuitElm[vscount];
         vscount = 0;
         circuitNonLinear = false;
-        //System.out.println("ac3");
         // determine if circuit is nonlinear
         for (i = 0; i != elmList.size(); i++) {
             CircuitElm ce = getElm(i);
@@ -1456,7 +1420,6 @@ public class CirSim extends Frame
                 }
             }
         }
-        //System.out.println("ac5");
         for (i = 0; i != elmList.size(); i++) {
             CircuitElm ce = getElm(i);
             // look for inductors with no current path
@@ -1514,15 +1477,11 @@ public class CirSim extends Frame
                 }
             }
         }
-        //System.out.println("ac6");
         // simplify the matrix; this speeds things up quite a bit
         for (i = 0; i != matrixSize; i++) {
             int qm = -1, qp = -1;
             double qv = 0;
             RowInfo re = circuitRowInfo[i];
-	    /*System.out.println("row " + i + " " + re.lsChanges + " " + re
- .rsChanges + " " +
-			       re.dropRow);*/
             if (re.lsChanges || re.dropRow || re.rsChanges) {
                 continue;
             }
@@ -1550,15 +1509,6 @@ public class CirSim extends Frame
                 }
                 break;
             }
-            //System.out.println("line " + i + " " + qp + " " + qm + " " + j);
-	    /*if (qp != -1 && circuitRowInfo[qp].lsChanges) {
-		System.out.println("lschanges");
-		continue;
-	    }
-	    if (qm != -1 && circuitRowInfo[qm].lsChanges) {
-		System.out.println("lschanges");
-		continue;
-		}*/
             if (j == matrixSize) {
                 if (qp == -1) {
                     stop("Matrix error", null);
@@ -1571,14 +1521,11 @@ public class CirSim extends Frame
                     int k;
                     for (k = 0; elt.type == RowInfo.ROW_EQUAL && k < 100; k++) {
                         // follow the chain
-			/*System.out.println("following equal chain from " +
-					   i + " " + qp + " to " + elt.nodeEq);*/
                         qp = elt.nodeEq;
                         elt = circuitRowInfo[qp];
                     }
                     if (elt.type == RowInfo.ROW_EQUAL) {
                         // break equal chains
-                        //System.out.println("Break equal chain");
                         elt.type = RowInfo.ROW_NORMAL;
                         continue;
                     }
@@ -1590,8 +1537,6 @@ public class CirSim extends Frame
                     elt.type = RowInfo.ROW_CONST;
                     elt.value = (circuitRightSide[i] + rsadd) / qv;
                     circuitRowInfo[i].dropRow = true;
-                    //System.out.println(qp + " * " + qv + " = const " + elt
-                    // .value);
                     i = -1; // start over from scratch
                 } else if (circuitRightSide[i] + rsadd == 0) {
                     // we found a row with only two nonzero entries, and one
@@ -1617,7 +1562,6 @@ public class CirSim extends Frame
                 }
             }
         }
-        //System.out.println("ac7");
         // find size of new matrix
         int nn = 0;
         for (i = 0; i != matrixSize; i++) {
@@ -1654,24 +1598,11 @@ public class CirSim extends Frame
                     elt.type = e2.type;
                     elt.value = e2.value;
                     elt.mapCol = -1;
-                    //System.out.println(i + " = [late]const " + elt.value);
                 } else {
                     elt.mapCol = e2.mapCol;
-                    //System.out.println(i + " maps to: " + e2.mapCol);
                 }
             }
         }
-        //System.out.println("ac8");
-
-	/*System.out.println("matrixSize = " + matrixSize);
-
-	for (j = 0; j != circuitMatrixSize; j++) {
-	    System.out.println(j + ": ");
-	    for (i = 0; i != circuitMatrixSize; i++)
-		System.out.print(circuitMatrix[j][i] + " ");
-	    System.out.print("  " + circuitRightSide[j] + "\n");
-	}
-	System.out.print("\n");*/
         // make the new, simplified matrix
         int newsize = nn;
         double[][] newmatx = new double[newsize][newsize];
@@ -1685,7 +1616,6 @@ public class CirSim extends Frame
             }
             newrs[ii] = circuitRightSide[i];
             rri.mapRow = ii;
-            //System.out.println("Row " + i + " maps to " + ii);
             for (j = 0; j != matrixSize; j++) {
                 RowInfo ri = circuitRowInfo[j];
                 if (ri.type == RowInfo.ROW_CONST) {
@@ -1708,15 +1638,6 @@ public class CirSim extends Frame
             }
         }
         circuitNeedsMap = true;
-
-	/*
-	System.out.println("matrixSize = " + matrixSize + " " + circuitNonLinear);
-	for (j = 0; j != circuitMatrixSize; j++) {
-	    for (i = 0; i != circuitMatrixSize; i++)
-		System.out.print(circuitMatrix[j][i] + " ");
-	    System.out.print("  " + circuitRightSide[j] + "\n");
-	}
-	System.out.print("\n");*/
         // if a matrix is linear, we can do the lu_factor here instead of
         // needing to do it every frame
         if (!circuitNonLinear) {
@@ -1830,13 +1751,10 @@ public class CirSim extends Frame
                 i = circuitRowInfo[i - 1].mapRow;
                 RowInfo ri = circuitRowInfo[j - 1];
                 if (ri.type == RowInfo.ROW_CONST) {
-                    //System.out.println("Stamping constant " + i + " " + j +
-                    // " " + x);
                     circuitRightSide[i] -= x * ri.value;
                     return;
                 }
                 j = ri.mapCol;
-                //System.out.println("stamping " + i + " " + j + " " + x);
             } else {
                 i--;
                 j--;
@@ -1851,7 +1769,6 @@ public class CirSim extends Frame
         if (i > 0) {
             if (circuitNeedsMap) {
                 i = circuitRowInfo[i - 1].mapRow;
-                //System.out.println("stamping " + i + " " + x);
             } else {
                 i--;
             }
@@ -1861,7 +1778,6 @@ public class CirSim extends Frame
 
     // indicate that the value on the right side of row i changes in doStep()
     void stampRightSide(int i) {
-        //System.out.println("rschanges true " + (i-1));
         if (i > 0) {
             circuitRowInfo[i - 1].rsChanges = true;
         }
@@ -1878,7 +1794,6 @@ public class CirSim extends Frame
         if (speedBar.getValue() == 0) {
             return 0;
         }
-        //return (Math.exp((speedBar.getValue()-1)/24.) + .5);
         return .1 * Math.exp((speedBar.getValue() - 61) / 24.);
     }
 
@@ -1888,7 +1803,6 @@ public class CirSim extends Frame
             return;
         }
         int iter;
-        //int maxIter = getIterCount();
         boolean debugprint = dumpMatrix;
         dumpMatrix = false;
         long steprate = (long) (160 * getIterCount());
@@ -1967,11 +1881,8 @@ public class CirSim extends Frame
                     } else {
                         res = circuitRightSide[ri.mapCol];
                     }
-		    /*System.out.println(j + " " + res + " " +
-		      ri.type + " " + ri.mapCol);*/
                     if (Double.isNaN(res)) {
                         converged = false;
-                        //debugprint = true;
                         break;
                     }
                     if (j < nodeList.size() - 1) {
@@ -1983,8 +1894,6 @@ public class CirSim extends Frame
                         }
                     } else {
                         int ji = j - (nodeList.size() - 1);
-                        //System.out.println("setting vsrc " + ji + " to " +
-                        // res);
                         voltageSources[ji].setCurrent(ji, res);
                     }
                 }
@@ -2012,8 +1921,6 @@ public class CirSim extends Frame
             }
         }
         lastIterTime = lit;
-        //System.out.println((System.currentTimeMillis()-lastFrameTime)/
-        // (double) iter);
     }
 
     int min(int a, int b) {
@@ -2025,7 +1932,6 @@ public class CirSim extends Frame
     }
 
     void editFuncPoint(int x, int y) {
-        // XXX
         cv.repaint(pause);
     }
 
@@ -2243,8 +2149,6 @@ public class CirSim extends Frame
                 ImportExportDialog.Action.IMPORT
             );
         }
-        //	    impDialog = new ImportExportClipboardDialog(this,
-        //		ImportExportDialog.Action.IMPORT);
         pushUndo();
         impDialog.execute();
     }
@@ -2259,8 +2163,6 @@ public class CirSim extends Frame
                 this,
                 ImportExportDialog.Action.EXPORT
             );
-            //	    expDialog = new ImportExportClipboardDialog(this,
-            //		 ImportExportDialog.Action.EXPORT);
         }
         expDialog.setDump(dump);
         expDialog.execute();
@@ -2499,7 +2401,6 @@ public class CirSim extends Frame
                     }
                     // find element class
                     Class[] carr = new Class[6];
-                    //carr[0] = getClass();
                     carr[0] = carr[1] = carr[2] = carr[3] = carr[4] =
                         int.class;
                     carr[5] = StringTokenizer.class;
@@ -2507,7 +2408,6 @@ public class CirSim extends Frame
                     cstr = cls.getConstructor(carr);
                     // invoke constructor with starting coordinates
                     Object[] oarr = new Object[6];
-                    //oarr[0] = this;
                     oarr[0] = new Integer(x1);
                     oarr[1] = new Integer(y1);
                     oarr[2] = new Integer(x2);
@@ -2551,7 +2451,6 @@ public class CirSim extends Frame
         timeStep = new Double(st.nextToken()).doubleValue();
         double sp = new Double(st.nextToken()).doubleValue();
         int sp2 = (int) (Math.log(10 * sp) * 24 + 61.5);
-        //int sp2 = (int) (Math.log(sp)*24+1.5);
         speedBar.setValue(sp2);
         currentBar.setValue(new Integer(st.nextToken()).intValue());
         CircuitElm.voltageRange = new Double(st.nextToken()).doubleValue();
@@ -3503,7 +3402,6 @@ public class CirSim extends Frame
                 return false;
             }
             if (used[n1]) {
-                //System.out.println("used " + n1);
                 return false;
             }
             used[n1] = true;
@@ -3546,7 +3444,6 @@ public class CirSim extends Frame
                 }
                 int j;
                 for (j = 0; j != ce.getPostCount(); j++) {
-                    //System.out.println(ce + " " + ce.getNode(j));
                     if (ce.getNode(j) == n1) {
                         break;
                     }
@@ -3555,7 +3452,6 @@ public class CirSim extends Frame
                     continue;
                 }
                 if (ce.hasGroundConnection(j) && findPath(0, depth)) {
-                    //System.out.println(ce + " has ground");
                     used[n1] = false;
                     return true;
                 }
@@ -3564,9 +3460,6 @@ public class CirSim extends Frame
                     if (j == 0) {
                         c = -c;
                     }
-                    //System.out.println("matching " + c + " to " + firstElm
-                    // .getCurrent());
-                    //System.out.println(ce + " " + firstElm);
                     if (Math.abs(c - firstElm.getCurrent()) > 1e-10) {
                         continue;
                     }
@@ -3576,21 +3469,16 @@ public class CirSim extends Frame
                     if (j == k) {
                         continue;
                     }
-                    //System.out.println(ce + " " + ce.getNode(j) + "-" + ce
-                    // .getNode(k));
                     if (ce.getConnection(j, k) && findPath(
                         ce.getNode(k),
                         depth
                     )) {
-                        //System.out.println("got findpath " + n1);
                         used[n1] = false;
                         return true;
                     }
-                    //System.out.println("back on findpath " + n1);
                 }
             }
             used[n1] = false;
-            //System.out.println(n1 + " failed");
             return false;
         }
     }

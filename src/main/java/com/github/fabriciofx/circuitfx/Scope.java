@@ -526,7 +526,6 @@ class Scope {
             if (periodct < 1 || periodstd > 2) {
                 freq = 0;
             }
-            // System.out.println(freq + " " + periodstd + " " + periodct);
         }
         g.drawImage(image, rect.x, rect.y, null);
         g.setColor(elm.whiteColor);
@@ -707,14 +706,6 @@ class Scope {
         }
         if (sim.useBufferedImage) {
             try {
-		/* simulate the following code using reflection:
-		   dbimage = new BufferedImage(d.width, d.height,
-		   BufferedImage.TYPE_INT_RGB);
-		   DataBuffer db = (DataBuffer)(((BufferedImage)dbimage).
-		   getRaster().getDataBuffer());
-		   DataBufferInt dbi = (DataBufferInt) db;
-		   pixels = dbi.getData();
-		*/
                 Class biclass = Class.forName("java.awt.image.BufferedImage");
                 Class dbiclass = Class.forName("java.awt.image.DataBufferInt");
                 Class rasclass = Class.forName("java.awt.image.Raster");
@@ -730,7 +721,6 @@ class Scope {
                 pixels = (int[])
                     dbiclass.getMethod("getData").invoke(db);
             } catch (Exception ee) {
-                // ee.printStackTrace();
                 System.out.println("BufferedImage failed");
             }
         }

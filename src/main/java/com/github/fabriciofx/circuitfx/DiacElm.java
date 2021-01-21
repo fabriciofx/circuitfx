@@ -103,7 +103,6 @@ class DiacElm extends CircuitElm {
         if (Math.abs(vd) > breakdown) {
             state = true;
         }
-        //System.out.print(this + " res current set to " + current + "\n");
     }
 
     void doStep() {

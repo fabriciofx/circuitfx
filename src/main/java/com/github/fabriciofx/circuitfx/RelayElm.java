@@ -153,7 +153,6 @@ class RelayElm extends CircuitElm {
                 drawThickLine(g, swposts[p][i], swpoles[p][i]);
             }
             interpPoint(swpoles[p][1], swpoles[p][2], ptSwitch[p], d_position);
-            //setVoltageColor(g, volts[nSwitch0]);
             g.setColor(Color.lightGray);
             drawThickLine(g, swpoles[p][0], ptSwitch[p]);
             switchCurCount[p] = updateDotCount(
@@ -295,7 +294,6 @@ class RelayElm extends CircuitElm {
         } else {
             i_position = 2;
         }
-        //System.out.println("ind " + this + " " + current + " " + voltdiff);
     }
 
     // we need this to be able to change the matrix for each step

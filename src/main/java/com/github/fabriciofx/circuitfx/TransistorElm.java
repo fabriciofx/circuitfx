@@ -211,7 +211,6 @@ class TransistorElm extends CircuitElm {
                 vnew = vt * Math.log(vnew / vt);
             }
             sim.converged = false;
-            //System.out.println(vnew + " " + oo + " " + vold);
         }
         return (vnew);
     }
@@ -240,37 +239,23 @@ class TransistorElm extends CircuitElm {
                 gmin = .1;
             }
         }
-        //System.out.print("T " + vbc + " " + vbe + "\n");
         vbc = pnp * limitStep(pnp * vbc, pnp * lastvbc);
         vbe = pnp * limitStep(pnp * vbe, pnp * lastvbe);
         lastvbc = vbc;
         lastvbe = vbe;
         double pcoef = vdcoef * pnp;
         double expbc = Math.exp(vbc * pcoef);
-	    /*if (expbc > 1e13 || Double.isInfinite(expbc))
-	      expbc = 1e13;*/
         double expbe = Math.exp(vbe * pcoef);
         if (expbe < 1) {
             expbe = 1;
         }
-	    /*if (expbe > 1e13 || Double.isInfinite(expbe))
-	      expbe = 1e13;*/
         ie = pnp * leakage * (-(expbe - 1) + rgain * (expbc - 1));
         ic = pnp * leakage * (fgain * (expbe - 1) - (expbc - 1));
         ib = -(ie + ic);
-        //System.out.println("gain " + ic/ib);
-        //System.out.print("T " + vbc + " " + vbe + " " + ie + " " + ic + "\n");
         double gee = -leakage * vdcoef * expbe;
         double gec = rgain * leakage * vdcoef * expbc;
         double gce = -gee * fgain;
         double gcc = -gec * (1 / rgain);
-
-	    /*System.out.print("gee = " + gee + "\n");
-	    System.out.print("gec = " + gec + "\n");
-	    System.out.print("gce = " + gce + "\n");
-	    System.out.print("gcc = " + gcc + "\n");
-	    System.out.print("gce+gcc = " + (gce+gcc) + "\n");
-	    System.out.print("gee+gec = " + (gee+gec) + "\n");*/
         // stamps from page 302 of Pillage.  Node 0 is the base,
         // node 1 the collector, node 2 the emitter.  Also stamp
         // minimum conductance (gmin) between b,e and b,c

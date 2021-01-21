@@ -339,8 +339,6 @@ public abstract class CircuitElm implements Editable {
     void interpPoint(Point a, Point b, Point c, double f) {
         int xpd = b.x - a.x;
         int ypd = b.y - a.y;
-	/*double q = (a.x*(1-f)+b.x*f+.48);
-	  System.out.println(q + " " + (int) q);*/
         c.x = (int) Math.floor(a.x * (1 - f) + b.x * f + .48);
         c.y = (int) Math.floor(a.y * (1 - f) + b.y * f + .48);
     }
@@ -698,13 +696,7 @@ public abstract class CircuitElm implements Editable {
             return cc;
         }
         double cadd = cur * currentMult;
-	/*if (cur != 0 && cadd <= .05 && cadd >= -.05)
-	  cadd = (cadd < 0) ? -.05 : .05;*/
         cadd %= 8;
-	/*if (cadd > 8)
-	  cadd = 8;
-	  if (cadd < -8)
-	  cadd = -8;*/
         return cc + cadd;
     }
 
@@ -755,10 +747,6 @@ public abstract class CircuitElm implements Editable {
     }
 
     void setPowerColor(Graphics g, boolean yellow) {
-	/*if (conductanceCheckItem.getState()) {
-	  setConductanceColor(g, current/getVoltageDiff());
-	  return;
-	  }*/
         if (!sim.powerCheckItem.getState()) {
             return;
         }
@@ -774,9 +762,6 @@ public abstract class CircuitElm implements Editable {
         }
         int rg = 128 + (int) (w * 127);
         int b = (int) (128 * (1 - w));
-	/*if (yellow)
-	  g.setColor(new Color(rg, rg, b));
-	  else */
         if (w0 > 0) {
             g.setColor(new Color(rg, b, b));
         } else {
@@ -786,7 +771,6 @@ public abstract class CircuitElm implements Editable {
 
     void setConductanceColor(Graphics g, double w0) {
         w0 *= powerMult;
-        //System.out.println(w);
         double w = (w0 < 0) ? -w0 : w0;
         if (w > 1) {
             w = 1;

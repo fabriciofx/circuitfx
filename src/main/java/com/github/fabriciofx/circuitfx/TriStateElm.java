@@ -166,12 +166,12 @@ class TriStateElm extends CircuitElm {
         arr[3] = "I = " + getCurrentDText(getCurrent());
         arr[4] = "Vc = " + getVoltageText(volts[2]);
     }
+
     // we have to just assume current will flow either way, even though that
     // might cause singular matrix errors
     //     0---3----------1
     //            /
     //           2
-
     boolean getConnection(int n1, int n2) {
         return (n1 == 1 && n2 == 3) || (n1 == 3 && n2 == 1);
     }
