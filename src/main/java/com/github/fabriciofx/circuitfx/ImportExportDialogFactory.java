@@ -21,6 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.fabriciofx.circuitfx;
+
 public class ImportExportDialogFactory {
     public static ImportExportDialog Create(
         CirSim f,

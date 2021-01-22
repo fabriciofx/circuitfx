@@ -21,6 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.fabriciofx.circuitfx;
+
 class PTransistorElm extends TransistorElm {
     public PTransistorElm(int xx, int yy) {
         super(xx, yy, true);

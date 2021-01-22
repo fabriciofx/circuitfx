@@ -21,6 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.fabriciofx.circuitfx;
+
 class Inductor {
     public static final int FLAG_BACK_EULER = 2;
     int[] nodes;

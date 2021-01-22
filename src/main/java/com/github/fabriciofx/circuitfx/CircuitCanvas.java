@@ -21,6 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.fabriciofx.circuitfx;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;

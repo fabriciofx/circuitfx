@@ -21,6 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.fabriciofx.circuitfx;
+
 class DCVoltageElm extends VoltageElm {
     public DCVoltageElm(int xx, int yy) {
         super(xx, yy, WF_DC);

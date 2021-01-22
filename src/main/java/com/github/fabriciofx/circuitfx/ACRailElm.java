@@ -21,6 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.fabriciofx.circuitfx;
+
 class ACRailElm extends RailElm {
     public ACRailElm(int xx, int yy) {
         super(xx, yy, WF_AC);
