@@ -21,21 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// stub implementation of TriacElm, based on SCRElm
-// FIXME need to add TriacElm to srclist
-// FIXME need to uncomment TriacElm line from CirSim.java
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
-// Silicon-Controlled Rectifier
-// 3 nodes, 1 internal node
-// 0 = anode, 1 = cathode, 2 = gate
-// 0, 3 = variable resistor
-// 3, 2 = diode
-// 2, 1 = 50 ohm resistor
 
+/**
+ * Stub implementation of TriacElm, based on SCRElm.
+ */
+// @todo: need to add TriacElm to srclist
+// @todo: need to uncomment TriacElm line from CirSim.
 class TriacElm extends CircuitElm {
+    // Silicon-Controlled Rectifier
+    // 3 nodes, 1 internal node
+    // 0 = anode, 1 = cathode, 2 = gate
+    // 0, 3 = variable resistor
+    // 3, 2 = diode
+    // 2, 1 = 50 ohm resistor
     final int anode = 0;
     final int cnode = 1;
     final int gnode = 2;

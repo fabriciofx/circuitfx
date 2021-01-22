@@ -23,8 +23,10 @@
  */
 import java.awt.Checkbox;
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class SeqGenElm extends ChipElm {
     short data = 0;
     byte position = 0;

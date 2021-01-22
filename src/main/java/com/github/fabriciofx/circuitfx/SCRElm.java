@@ -25,14 +25,14 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
-// Silicon-Controlled Rectifier
-// 3 nodes, 1 internal node
-// 0 = anode, 1 = cathode, 2 = gate
-// 0, 3 = variable resistor
-// 3, 2 = diode
-// 2, 1 = 50 ohm resistor
 
 class SCRElm extends CircuitElm {
+    // Silicon-Controlled Rectifier
+    // 3 nodes, 1 internal node
+    // 0 = anode, 1 = cathode, 2 = gate
+    // 0, 3 = variable resistor
+    // 3, 2 = diode
+    // 2, 1 = 50 ohm resistor
     final int anode = 0;
     final int cnode = 1;
     final int gnode = 2;

@@ -22,8 +22,10 @@
  * SOFTWARE.
  */
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class PisoShiftElm extends ChipElm {
     short data = 0;//Lack of unsigned types sucks
     boolean clockstate = false;

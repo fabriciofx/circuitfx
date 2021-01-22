@@ -21,9 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// CirSim.java (c) 2010 by Paul Falstad
-// For information about the theory behind this, see Electronic Circuit &
-// System Simulation Methods by Pillage
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxMenuItem;
@@ -73,6 +70,11 @@ import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+/**
+ * CirSim.
+ * For information about the theory behind this, see Electronic Circuit &
+ * System Simulation Methods by Pillage.
+ */
 public class CirSim extends Frame
     implements ComponentListener, ActionListener, AdjustmentListener,
     MouseMotionListener, MouseListener, ItemListener, KeyListener {

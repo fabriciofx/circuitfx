@@ -26,8 +26,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class AMElm extends CircuitElm {
     static final int FLAG_COS = 2;
     final int circleSize = 17;

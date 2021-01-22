@@ -22,8 +22,10 @@
  * SOFTWARE.
  */
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class MultiplexerElm extends ChipElm {
     public MultiplexerElm(int xx, int yy) {
         super(xx, yy);

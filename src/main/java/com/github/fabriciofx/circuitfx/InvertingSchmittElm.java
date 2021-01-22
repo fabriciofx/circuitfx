@@ -25,8 +25,10 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class InvertingSchmittElm extends CircuitElm {
     double slewRate; // V/ns
     double lowerTrigger;

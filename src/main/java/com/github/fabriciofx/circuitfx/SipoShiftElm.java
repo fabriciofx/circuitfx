@@ -22,8 +22,10 @@
  * SOFTWARE.
  */
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class SipoShiftElm extends ChipElm {
     short data = 0;//This has to be a short because there's no unsigned byte
     // and it's screwing with my code

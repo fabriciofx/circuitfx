@@ -26,13 +26,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
-// 0 = switch
-// 1 = switch end 1
-// 2 = switch end 2
-// ...
-// 3n   = coil
-// 3n+1 = coil
-// 3n+2 = end of coil resistor
 
 class RelayElm extends CircuitElm {
     final int nSwitch0 = 0;
@@ -56,6 +49,13 @@ class RelayElm extends CircuitElm {
     int i_position;
     int poleCount;
     int openhs;
+    // 0 = switch
+    // 1 = switch end 1
+    // 2 = switch end 2
+    // ...
+    // 3n   = coil
+    // 3n+1 = coil
+    // 3n+2 = end of coil resistor
     int nCoil1, nCoil2, nCoil3;
     double a1, a2, a3, a4;
 

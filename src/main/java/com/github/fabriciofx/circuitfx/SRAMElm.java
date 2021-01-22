@@ -22,8 +22,10 @@
  * SOFTWARE.
  */
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class SRAMElm extends ChipElm {
     short[] data = new short[256];//Fuck this lack of unsigned types. That's
 

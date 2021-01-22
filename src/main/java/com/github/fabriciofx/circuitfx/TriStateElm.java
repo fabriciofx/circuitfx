@@ -25,8 +25,10 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
-// contributed by Edward Calver
 
+/**
+ * Contributed by Edward Calver.
+ */
 class TriStateElm extends CircuitElm {
     double resistance, r_on, r_off;
     boolean open;

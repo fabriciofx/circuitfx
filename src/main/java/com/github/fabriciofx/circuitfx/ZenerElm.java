@@ -26,8 +26,10 @@ import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
 
-// Zener code contributed by J. Mike Rollins
-// http://www.camotruck.net/rollins/simulator.html
+/**
+ * Zener code contributed by J. Mike Rollins
+ * http://www.camotruck.net/rollins/simulator.html
+ */
 class ZenerElm extends DiodeElm {
     final int hs = 8;
     final double default_zvoltage = 5.6;

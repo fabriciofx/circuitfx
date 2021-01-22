@@ -21,13 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// stub implementation of DiacElm, based on SparkGapElm
-// FIXME need to add DiacElm.java to srclist
-// FIXME need to uncomment DiacElm line from CirSim.java
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
 
+/**
+ * Stub implementation of DiacElm, based on SparkGapElm
+ *
+ */
+// @todo: need to add DiacElm.java to srclist.
+// @todo: need to uncomment DiacElm line from CirSim.
 class DiacElm extends CircuitElm {
     double onresistance, offresistance, breakdown, holdcurrent;
     boolean state;
@@ -35,7 +38,7 @@ class DiacElm extends CircuitElm {
 
     public DiacElm(int xx, int yy) {
         super(xx, yy);
-        // FIXME need to adjust defaults to make sense for diac
+        // @todo: need to adjust defaults to make sense for diac
         offresistance = 1e9;
         onresistance = 1e3;
         breakdown = 1e3;
@@ -75,7 +78,7 @@ class DiacElm extends CircuitElm {
     }
 
     void draw(Graphics g) {
-        // FIXME need to draw Diac
+        // @todo: need to draw Diac
         int i;
         double v1 = volts[0];
         double v2 = volts[1];
@@ -119,7 +122,6 @@ class DiacElm extends CircuitElm {
     }
 
     void getInfo(String[] arr) {
-        // FIXME
         arr[0] = "spark gap";
         getBasicInfo(arr);
         arr[3] = state ? "on" : "off";

@@ -21,15 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// stub ThermistorElm based on SparkGapElm
-// FIXME need to uncomment ThermistorElm line from CirSim.java
-// FIXME need to add ThermistorElm.java to srclist
 import java.awt.Graphics;
 import java.awt.Label;
 import java.awt.Point;
 import java.awt.Scrollbar;
 import java.util.StringTokenizer;
 
+/**
+ * Stub ThermistorElm based on SparkGapElm.
+ */
+// @todo: need to uncomment ThermistorElm line from CirSim.
+// @todo: need to add ThermistorElm.java to srclist.
 class ThermistorElm extends CircuitElm {
     double minresistance, maxresistance;
     double resistance;

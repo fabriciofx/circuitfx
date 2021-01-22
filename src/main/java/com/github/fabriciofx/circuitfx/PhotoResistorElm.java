@@ -21,15 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// stub PhotoResistorElm based on SparkGapElm
-// FIXME need to uncomment PhotoResistorElm line from CirSim.java
-// FIXME need to add PhotoResistorElm.java to srclist
 import java.awt.Graphics;
 import java.awt.Label;
 import java.awt.Point;
 import java.awt.Scrollbar;
 import java.util.StringTokenizer;
 
+/**
+ * Stub PhotoResistorElm based on SparkGapElm.
+ */
+// @todo: need to uncomment PhotoResistorElm line from CirSim
+// @todo: need to add PhotoResistorElm.java to srclist
 class PhotoResistorElm extends CircuitElm {
     double minresistance, maxresistance;
     double resistance;

@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// Circuit.java (c) 2005,2008 by Paul Falstad, www.falstad.com
 import java.applet.Applet;
 import java.awt.Graphics;
 import java.awt.event.ComponentEvent;

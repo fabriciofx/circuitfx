@@ -21,7 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// info about each row/column of the matrix for simplification purposes
+/**
+ * Info about each row/column of the matrix for simplification purposes.
+ */
 class RowInfo {
     static final int ROW_NORMAL = 0;  // ordinary value
     static final int ROW_CONST = 1;  // value is constant
