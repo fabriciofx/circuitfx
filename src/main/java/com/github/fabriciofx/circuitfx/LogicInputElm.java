@@ -23,10 +23,10 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class LogicInputElm extends SwitchElm {
     final int FLAG_TERNARY = 1;
@@ -135,7 +135,7 @@ class LogicInputElm extends SwitchElm {
     public EditInfo getEditInfo(int n) {
         if (n == 0) {
             EditInfo ei = new EditInfo("", 0, 0, 0);
-            ei.checkbox = new Checkbox("Momentary Switch", momentary);
+            ei.checkbox = new JCheckBox("Momentary Switch", momentary);
             return ei;
         }
         if (n == 1) {
@@ -149,7 +149,7 @@ class LogicInputElm extends SwitchElm {
 
     public void setEditValue(int n, EditInfo ei) {
         if (n == 0) {
-            momentary = ei.checkbox.getState();
+            momentary = ei.checkbox.isSelected();
         }
         if (n == 1) {
             hiV = ei.value;

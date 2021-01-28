@@ -23,8 +23,8 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class MonostableElm extends ChipElm {
     //Used to detect rising edge
@@ -99,7 +99,7 @@ class MonostableElm extends ChipElm {
     public EditInfo getEditInfo(int n) {
         if (n == 2) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Retriggerable", retriggerable);
+            ei.checkbox = new JCheckBox("Retriggerable", retriggerable);
             return ei;
         }
         if (n == 3) {
@@ -111,7 +111,7 @@ class MonostableElm extends ChipElm {
 
     public void setEditValue(int n, EditInfo ei) {
         if (n == 2) {
-            retriggerable = ei.checkbox.getState();
+            retriggerable = ei.checkbox.isSelected();
         }
         if (n == 3) {
             delay = ei.value;

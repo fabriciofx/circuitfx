@@ -23,12 +23,12 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class TransistorElm extends CircuitElm {
     static final double leakage = 1e-13; // 1e-6;
@@ -113,7 +113,7 @@ class TransistorElm extends CircuitElm {
         g.fillPolygon(arrowPoly);
         // draw base
         setVoltageColor(g, volts[0]);
-        if (sim.powerCheckItem.getState()) {
+        if (sim.powerCheckItem.isSelected()) {
             g.setColor(Color.gray);
         }
         drawThickLine(g, point1, base);
@@ -334,7 +334,7 @@ class TransistorElm extends CircuitElm {
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Swap E/C", (flags & FLAG_FLIP) != 0);
+            ei.checkbox = new JCheckBox("Swap E/C", (flags & FLAG_FLIP) != 0);
             return ei;
         }
         return null;
@@ -346,7 +346,7 @@ class TransistorElm extends CircuitElm {
             setup();
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_FLIP;
             } else {
                 flags &= ~FLAG_FLIP;

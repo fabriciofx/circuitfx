@@ -23,9 +23,9 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Graphics;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class InductorElm extends CircuitElm {
     Inductor ind;
@@ -119,7 +119,7 @@ class InductorElm extends CircuitElm {
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox(
+            ei.checkbox = new JCheckBox(
                 "Trapezoidal Approximation",
                 ind.isTrapezoidal()
             );
@@ -133,7 +133,7 @@ class InductorElm extends CircuitElm {
             inductance = ei.value;
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags &= ~Inductor.FLAG_BACK_EULER;
             } else {
                 flags |= Inductor.FLAG_BACK_EULER;

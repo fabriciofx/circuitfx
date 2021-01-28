@@ -23,10 +23,10 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class Switch2Elm extends SwitchElm {
     static final int FLAG_CENTER_OFF = 1;
@@ -153,7 +153,7 @@ class Switch2Elm extends SwitchElm {
     public EditInfo getEditInfo(int n) {
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Center Off", hasCenterOff());
+            ei.checkbox = new JCheckBox("Center Off", hasCenterOff());
             return ei;
         }
         return super.getEditInfo(n);
@@ -162,7 +162,7 @@ class Switch2Elm extends SwitchElm {
     public void setEditValue(int n, EditInfo ei) {
         if (n == 1) {
             flags &= ~FLAG_CENTER_OFF;
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_CENTER_OFF;
             }
             if (hasCenterOff()) {

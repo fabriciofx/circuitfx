@@ -23,15 +23,15 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Button;
-import java.awt.Choice;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
-import java.awt.Label;
 import java.awt.LayoutManager;
-import java.awt.Scrollbar;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
 
 class EditDialogLayout implements LayoutManager {
     public EditDialogLayout() {
@@ -67,14 +67,14 @@ class EditDialogLayout implements LayoutManager {
                 if (pw < d.width) {
                     pw = d.width;
                 }
-                if (m instanceof Scrollbar) {
+                if (m instanceof JSlider) {
                     h += 10;
                     d.width = targetw - x;
                 }
-                if (m instanceof Choice && d.width > targetw) {
+                if (m instanceof JComboBox && d.width > targetw) {
                     d.width = targetw - x;
                 }
-                if (m instanceof Label) {
+                if (m instanceof JLabel) {
                     Dimension d2 =
                         target.getComponent(i + 1).getPreferredSize();
                     if (d.height < d2.height) {
@@ -83,7 +83,7 @@ class EditDialogLayout implements LayoutManager {
                     h += d.height / 5;
                     newline = false;
                 }
-                if (m instanceof Button) {
+                if (m instanceof JButton) {
                     if (x == 0) {
                         h += 20;
                     }

@@ -28,7 +28,7 @@ public class ImportExportDialogFactory {
         CirSim f,
         ImportExportDialog.Action type
     ) {
-        if (f.applet != null) {
+        if (f.circuit != null) {
             return new ImportExportClipboardDialog(f, type);
         } else {
             return new ImportExportFileDialog(f, type);

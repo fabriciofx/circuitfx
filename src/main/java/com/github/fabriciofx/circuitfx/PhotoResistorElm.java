@@ -24,10 +24,11 @@
 package com.github.fabriciofx.circuitfx;
 
 import java.awt.Graphics;
-import java.awt.Label;
 import java.awt.Point;
-import java.awt.Scrollbar;
 import java.util.StringTokenizer;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 
 /**
  * Stub PhotoResistorElm based on SparkGapElm.
@@ -37,8 +38,8 @@ import java.util.StringTokenizer;
 class PhotoResistorElm extends CircuitElm {
     double minresistance, maxresistance;
     double resistance;
-    Scrollbar slider;
-    Label label;
+    JSlider slider;
+    JLabel label;
     Point ps3, ps4;
 
     public PhotoResistorElm(int xx, int yy) {
@@ -71,14 +72,13 @@ class PhotoResistorElm extends CircuitElm {
     }
 
     void createSlider() {
-        sim.main.add(label = new Label("Light Level", Label.CENTER));
+        sim.main.add(label = new JLabel("Light Level", SwingConstants.CENTER));
         int value = 50;
-        sim.main.add(slider = new Scrollbar(
-            Scrollbar.HORIZONTAL,
-            value,
-            1,
+        sim.main.add(slider = new JSlider(
+            SwingConstants.HORIZONTAL,
             0,
-            101
+            101,
+            value
         ));
         sim.main.validate();
     }

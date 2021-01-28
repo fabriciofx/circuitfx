@@ -23,10 +23,10 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class TransformerElm extends CircuitElm {
     public static final int FLAG_BACK_EULER = 2;
@@ -255,7 +255,7 @@ class TransformerElm extends CircuitElm {
         }
         if (n == 3) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox(
+            ei.checkbox = new JCheckBox(
                 "Trapezoidal Approximation",
                 isTrapezoidal()
             );
@@ -275,7 +275,7 @@ class TransformerElm extends CircuitElm {
             couplingCoef = ei.value;
         }
         if (n == 3) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags &= ~Inductor.FLAG_BACK_EULER;
             } else {
                 flags |= Inductor.FLAG_BACK_EULER;

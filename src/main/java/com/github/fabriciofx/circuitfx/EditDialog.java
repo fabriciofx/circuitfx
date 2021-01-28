@@ -23,36 +23,37 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Button;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Event;
-import java.awt.Label;
 import java.awt.Point;
-import java.awt.Scrollbar;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 interface Editable {
     EditInfo getEditInfo(int n);
     void setEditValue(int n, EditInfo ei);
 }
 
-class EditDialog extends Dialog
-    implements AdjustmentListener, ActionListener, ItemListener {
+class EditDialog extends JDialog
+    implements ChangeListener, ActionListener, ItemListener {
     final int barmax = 1000;
     Editable elm;
     CirSim cframe;
-    Button applyButton, okButton;
+    JButton applyButton, okButton;
     EditInfo[] einfos;
     int einfocount;
     NumberFormat noCommaFormat;
@@ -73,7 +74,7 @@ class EditDialog extends Dialog
                 break;
             }
             EditInfo ei = einfos[i];
-            add(new Label(ei.name));
+            add(new JLabel(ei.name));
             if (ei.choice != null) {
                 add(ei.choice);
                 ei.choice.addItemListener(this);
@@ -82,24 +83,24 @@ class EditDialog extends Dialog
                 ei.checkbox.addItemListener(this);
             } else {
                 add(ei.textf =
-                        new TextField(unitString(ei), 10));
+                        new JTextField(unitString(ei), 10));
                 if (ei.text != null) {
                     ei.textf.setText(ei.text);
                 }
                 ei.textf.addActionListener(this);
                 if (ei.text == null) {
-                    add(ei.bar = new Scrollbar(Scrollbar.HORIZONTAL,
-                                               50, 10, 0, barmax + 2
+                    add(ei.bar = new JSlider(SwingConstants.HORIZONTAL,
+                                             0, 50, barmax + 2
                     ));
                     setBar(ei);
-                    ei.bar.addAdjustmentListener(this);
+                    ei.bar.addChangeListener(this);
                 }
             }
         }
         einfocount = i;
-        add(applyButton = new Button("Apply"));
+        add(applyButton = new JButton("Apply"));
         applyButton.addActionListener(this);
-        add(okButton = new Button("OK"));
+        add(okButton = new JButton("OK"));
         okButton.addActionListener(this);
         Point x = cframe.main.getLocationOnScreen();
         Dimension d = getSize();
@@ -238,7 +239,8 @@ class EditDialog extends Dialog
         }
     }
 
-    public void adjustmentValueChanged(AdjustmentEvent e) {
+    @Override
+    public void stateChanged(final ChangeEvent e) {
         Object src = e.getSource();
         int i;
         for (i = 0; i != einfocount; i++) {

@@ -23,10 +23,10 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class LEDMatrixElm extends ChipElm {
     private static final int size = 8;
@@ -111,12 +111,12 @@ class LEDMatrixElm extends ChipElm {
     public EditInfo getEditInfo(int n) {
         if (n == 2) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Negate rows", negateRows);
+            ei.checkbox = new JCheckBox("Negate rows", negateRows);
             return ei;
         }
         if (n == 3) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Negate columns", negateColumns);
+            ei.checkbox = new JCheckBox("Negate columns", negateColumns);
             return ei;
         }
         if (n == 4) {
@@ -137,10 +137,10 @@ class LEDMatrixElm extends ChipElm {
     public void setEditValue(int n, EditInfo ei) {
         super.setEditValue(n, ei);
         if (n == 2) {
-            negateRows = ei.checkbox.getState();
+            negateRows = ei.checkbox.isSelected();
         }
         if (n == 3) {
-            negateColumns = ei.checkbox.getState();
+            negateColumns = ei.checkbox.isSelected();
         }
         if (n == 4) {
             colorR = ei.value;

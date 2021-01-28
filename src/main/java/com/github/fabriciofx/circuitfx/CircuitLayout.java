@@ -23,14 +23,14 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Choice;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
-import java.awt.Label;
 import java.awt.LayoutManager;
-import java.awt.Scrollbar;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
 
 class CircuitLayout implements LayoutManager {
     public CircuitLayout() {
@@ -65,13 +65,13 @@ class CircuitLayout implements LayoutManager {
             Component m = target.getComponent(i);
             if (m.isVisible()) {
                 Dimension d = m.getPreferredSize();
-                if (m instanceof Scrollbar) {
+                if (m instanceof JSlider) {
                     d.width = barwidth;
                 }
-                if (m instanceof Choice && d.width > barwidth) {
+                if (m instanceof JComboBox && d.width > barwidth) {
                     d.width = barwidth;
                 }
-                if (m instanceof Label) {
+                if (m instanceof JLabel) {
                     h += d.height / 5;
                     d.width = barwidth;
                 }

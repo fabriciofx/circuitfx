@@ -23,12 +23,12 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class MosfetElm extends CircuitElm {
     final int hs = 16;
@@ -333,7 +333,7 @@ class MosfetElm extends CircuitElm {
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Digital Symbol", drawDigital());
+            ei.checkbox = new JCheckBox("Digital Symbol", drawDigital());
             return ei;
         }
         return null;
@@ -344,7 +344,7 @@ class MosfetElm extends CircuitElm {
             vt = pnp * ei.value;
         }
         if (n == 1) {
-            flags = (ei.checkbox.getState()) ? (flags | FLAG_DIGITAL) :
+            flags = (ei.checkbox.isSelected()) ? (flags | FLAG_DIGITAL) :
                 (flags & ~FLAG_DIGITAL);
             setPoints();
         }

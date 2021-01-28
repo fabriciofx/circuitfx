@@ -23,11 +23,11 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class RelayElm extends CircuitElm {
     final int nSwitch0 = 0;
@@ -370,7 +370,7 @@ class RelayElm extends CircuitElm {
         }
         if (n == 6) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox(
+            ei.checkbox = new JCheckBox(
                 "Swap Coil Direction",
                 (flags & FLAG_SWAP_COIL) != 0
             );
@@ -401,7 +401,7 @@ class RelayElm extends CircuitElm {
             coilR = ei.value;
         }
         if (n == 6) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_SWAP_COIL;
             } else {
                 flags &= ~FLAG_SWAP_COIL;

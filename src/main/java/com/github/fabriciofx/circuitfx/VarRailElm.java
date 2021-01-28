@@ -23,13 +23,14 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Label;
-import java.awt.Scrollbar;
 import java.util.StringTokenizer;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 
 class VarRailElm extends RailElm {
-    Scrollbar slider;
-    Label label;
+    JSlider slider;
+    JLabel label;
     String sliderText;
 
     public VarRailElm(int xx, int yy) {
@@ -61,14 +62,13 @@ class VarRailElm extends RailElm {
 
     void createSlider() {
         waveform = WF_VAR;
-        sim.main.add(label = new Label(sliderText, Label.CENTER));
+        sim.main.add(label = new JLabel(sliderText, SwingConstants.CENTER));
         int value = (int) ((frequency - bias) * 100 / (maxVoltage - bias));
-        sim.main.add(slider = new Scrollbar(
-            Scrollbar.HORIZONTAL,
-            value,
-            1,
+        sim.main.add(slider = new JSlider(
+            SwingConstants.HORIZONTAL,
             0,
-            101
+            101,
+            value
         ));
         sim.main.validate();
     }

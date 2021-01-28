@@ -23,8 +23,8 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class CounterElm extends ChipElm {
     final int FLAG_ENABLE = 2;
@@ -89,17 +89,17 @@ class CounterElm extends ChipElm {
     public EditInfo getEditInfo(int n) {
         if (n == 0) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Flip X", (flags & FLAG_FLIP_X) != 0);
+            ei.checkbox = new JCheckBox("Flip X", (flags & FLAG_FLIP_X) != 0);
             return ei;
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Flip Y", (flags & FLAG_FLIP_Y) != 0);
+            ei.checkbox = new JCheckBox("Flip Y", (flags & FLAG_FLIP_Y) != 0);
             return ei;
         }
         if (n == 2) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Invert reset pin", invertreset);
+            ei.checkbox = new JCheckBox("Invert reset pin", invertreset);
             return ei;
         }
         return null;
@@ -107,7 +107,7 @@ class CounterElm extends ChipElm {
 
     public void setEditValue(int n, EditInfo ei) {
         if (n == 0) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_FLIP_X;
             } else {
                 flags &= ~FLAG_FLIP_X;
@@ -115,7 +115,7 @@ class CounterElm extends ChipElm {
             setPoints();
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_FLIP_Y;
             } else {
                 flags &= ~FLAG_FLIP_Y;
@@ -123,7 +123,7 @@ class CounterElm extends ChipElm {
             setPoints();
         }
         if (n == 2) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 invertreset = true;
                 pins[1].bubble = true;
             } else {

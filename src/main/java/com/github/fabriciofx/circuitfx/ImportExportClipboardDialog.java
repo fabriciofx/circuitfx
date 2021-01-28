@@ -23,22 +23,22 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Button;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.Point;
-import java.awt.TextArea;
 import java.awt.datatransfer.Clipboard;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTextArea;
 
 class ImportExportClipboardDialog
-    extends Dialog
+    extends JDialog
     implements ImportExportDialog, ActionListener {
     CirSim cframe;
-    Button importButton, closeButton;
-    TextArea text;
+    JButton importButton, closeButton;
+    JTextArea text;
     Action type;
     Clipboard clipboard = null;
 
@@ -50,12 +50,12 @@ class ImportExportClipboardDialog
         );
         cframe = f;
         setLayout(new ImportExportDialogLayout());
-        add(text = new TextArea("", 10, 60, TextArea.SCROLLBARS_BOTH));
-        importButton = new Button("Import");
+        add(text = new JTextArea(null, "", 10, 60));
+        importButton = new JButton("Import");
         this.type = type;
         add(importButton);
         importButton.addActionListener(this);
-        add(closeButton = new Button("Close"));
+        add(closeButton = new JButton("Close"));
         closeButton.addActionListener(this);
         Point x = cframe.main.getLocationOnScreen();
         resize(400, 300);

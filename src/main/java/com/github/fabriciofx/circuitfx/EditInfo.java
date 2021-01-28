@@ -23,18 +23,18 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
-import java.awt.Choice;
-import java.awt.Scrollbar;
-import java.awt.TextField;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 class EditInfo {
     String name, text;
     double value, minval, maxval;
-    TextField textf;
-    Scrollbar bar;
-    Choice choice;
-    Checkbox checkbox;
+    JTextField textf;
+    JSlider bar;
+    JComboBox choice;
+    JCheckBox checkbox;
     boolean newDialog;
     boolean forceLargeM;
     boolean dimensionless;

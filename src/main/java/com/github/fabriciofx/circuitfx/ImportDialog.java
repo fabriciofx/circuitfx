@@ -23,19 +23,19 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Button;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.Point;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTextArea;
 
-class ImportDialog extends Dialog implements ActionListener {
+class ImportDialog extends JDialog implements ActionListener {
     CirSim cframe;
-    Button importButton, closeButton;
-    TextArea text;
+    JButton importButton, closeButton;
+    JTextArea text;
     boolean isURL;
 
     ImportDialog(CirSim f, String str, boolean url) {
@@ -43,13 +43,13 @@ class ImportDialog extends Dialog implements ActionListener {
         isURL = url;
         cframe = f;
         setLayout(new ImportDialogLayout());
-        add(text = new TextArea(str, 10, 60, TextArea.SCROLLBARS_BOTH));
-        importButton = new Button("Import");
+        add(text = new JTextArea(null, str, 10, 60));
+        importButton = new JButton("Import");
         if (!isURL) {
             add(importButton);
         }
         importButton.addActionListener(this);
-        add(closeButton = new Button("Close"));
+        add(closeButton = new JButton("Close"));
         closeButton.addActionListener(this);
         Point x = cframe.main.getLocationOnScreen();
         resize(400, 300);

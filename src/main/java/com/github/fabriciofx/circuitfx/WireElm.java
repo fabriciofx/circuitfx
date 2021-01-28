@@ -23,9 +23,9 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Graphics;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class WireElm extends CircuitElm {
     static final int FLAG_SHOWCURRENT = 1;
@@ -98,12 +98,12 @@ class WireElm extends CircuitElm {
     public EditInfo getEditInfo(int n) {
         if (n == 0) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Show Current", mustShowCurrent());
+            ei.checkbox = new JCheckBox("Show Current", mustShowCurrent());
             return ei;
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Show Voltage", mustShowVoltage());
+            ei.checkbox = new JCheckBox("Show Voltage", mustShowVoltage());
             return ei;
         }
         return null;
@@ -111,14 +111,14 @@ class WireElm extends CircuitElm {
 
     public void setEditValue(int n, EditInfo ei) {
         if (n == 0) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags = FLAG_SHOWCURRENT;
             } else {
                 flags &= ~FLAG_SHOWCURRENT;
             }
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags = FLAG_SHOWVOLTAGE;
             } else {
                 flags &= ~FLAG_SHOWVOLTAGE;

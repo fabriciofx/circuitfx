@@ -23,19 +23,24 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.applet.Applet;
 import java.awt.Graphics;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import javax.swing.JApplet;
+import javax.swing.SwingUtilities;
 
-public class Circuit extends Applet implements ComponentListener {
+public class Circuit extends JApplet implements ComponentListener {
     static CirSim ogf;
     boolean finished = false;
     boolean started = false;
 
     public static void main(String[] args) {
-        ogf = new CirSim(null);
-        ogf.init();
+        SwingUtilities.invokeLater(
+            () -> {
+                ogf = new CirSim(null);
+                ogf.init();
+            }
+        );
     }
 
     void destroyFrame() {

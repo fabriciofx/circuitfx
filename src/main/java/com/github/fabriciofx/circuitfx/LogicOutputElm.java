@@ -23,10 +23,10 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class LogicOutputElm extends CircuitElm {
     final int FLAG_TERNARY = 1;
@@ -130,7 +130,7 @@ class LogicOutputElm extends CircuitElm {
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Current Required", needsPullDown());
+            ei.checkbox = new JCheckBox("Current Required", needsPullDown());
             return ei;
         }
         return null;
@@ -141,7 +141,7 @@ class LogicOutputElm extends CircuitElm {
             threshold = ei.value;
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags = FLAG_PULLDOWN;
             } else {
                 flags &= ~FLAG_PULLDOWN;

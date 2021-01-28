@@ -23,10 +23,10 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class SweepElm extends CircuitElm {
     final int FLAG_LOG = 1;
@@ -96,7 +96,7 @@ class SweepElm extends CircuitElm {
             tm = 2000 - tm;
         }
         double w = 1 + tm * .002;
-        if (!sim.stoppedCheck.getState()) {
+        if (!sim.stoppedCheck.isSelected()) {
             w = 1 + 2 * (frequency - minF) / (maxF - minF);
         }
         for (i = -xl; i <= xl; i++) {
@@ -107,7 +107,7 @@ class SweepElm extends CircuitElm {
             ox = xc + i;
             oy = yy;
         }
-        if (sim.showValuesCheckItem.getState()) {
+        if (sim.showValuesCheckItem.isSelected()) {
             String s = getShortUnitText(frequency, "Hz");
             if (dx == 0 || dy == 0) {
                 drawValues(g, s, circleSize);
@@ -209,7 +209,7 @@ class SweepElm extends CircuitElm {
         }
         if (n == 3) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Logarithmic", (flags & FLAG_LOG) != 0);
+            ei.checkbox = new JCheckBox("Logarithmic", (flags & FLAG_LOG) != 0);
             return ei;
         }
         if (n == 4) {
@@ -217,7 +217,7 @@ class SweepElm extends CircuitElm {
         }
         if (n == 5) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox(
+            ei.checkbox = new JCheckBox(
                 "Bidirectional",
                 (flags & FLAG_BIDIR) != 0
             );
@@ -245,7 +245,7 @@ class SweepElm extends CircuitElm {
         }
         if (n == 3) {
             flags &= ~FLAG_LOG;
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_LOG;
             }
         }
@@ -254,7 +254,7 @@ class SweepElm extends CircuitElm {
         }
         if (n == 5) {
             flags &= ~FLAG_BIDIR;
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_BIDIR;
             }
         }

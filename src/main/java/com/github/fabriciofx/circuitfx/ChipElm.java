@@ -23,13 +23,13 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 abstract class ChipElm extends CircuitElm {
     final int FLAG_SMALL = 1;
@@ -54,7 +54,7 @@ abstract class ChipElm extends CircuitElm {
         }
         noDiagonal = true;
         setupPins();
-        setSize(sim.smallGridCheckItem.getState() ? 1 : 2);
+        setSize(sim.smallGridCheckItem.isSelected() ? 1 : 2);
     }
 
     public ChipElm(
@@ -109,7 +109,7 @@ abstract class ChipElm extends CircuitElm {
             p.curcount = updateDotCount(p.current, p.curcount);
             drawDots(g, b, a, p.curcount);
             if (p.bubble) {
-                g.setColor(sim.printableCheckItem.getState() ?
+                g.setColor(sim.printableCheckItem.isSelected() ?
                                Color.white : Color.black);
                 drawThickCircle(g, p.bubbleX, p.bubbleY, 1);
                 g.setColor(lightGrayColor);
@@ -304,12 +304,12 @@ abstract class ChipElm extends CircuitElm {
     public EditInfo getEditInfo(int n) {
         if (n == 0) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Flip X", (flags & FLAG_FLIP_X) != 0);
+            ei.checkbox = new JCheckBox("Flip X", (flags & FLAG_FLIP_X) != 0);
             return ei;
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Flip Y", (flags & FLAG_FLIP_Y) != 0);
+            ei.checkbox = new JCheckBox("Flip Y", (flags & FLAG_FLIP_Y) != 0);
             return ei;
         }
         return null;
@@ -317,7 +317,7 @@ abstract class ChipElm extends CircuitElm {
 
     public void setEditValue(int n, EditInfo ei) {
         if (n == 0) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_FLIP_X;
             } else {
                 flags &= ~FLAG_FLIP_X;
@@ -325,7 +325,7 @@ abstract class ChipElm extends CircuitElm {
             setPoints();
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags |= FLAG_FLIP_Y;
             } else {
                 flags &= ~FLAG_FLIP_Y;

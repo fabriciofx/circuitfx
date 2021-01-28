@@ -23,8 +23,8 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 /**
  * Contributed by Edward Calver.
@@ -124,47 +124,47 @@ class SeqGenElm extends ChipElm {
         //My code
         if (n == 0) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 0 set", (data & 1) != 0);
+            ei.checkbox = new JCheckBox("Bit 0 set", (data & 1) != 0);
             return ei;
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 1 set", (data & 2) != 0);
+            ei.checkbox = new JCheckBox("Bit 1 set", (data & 2) != 0);
             return ei;
         }
         if (n == 2) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 2 set", (data & 4) != 0);
+            ei.checkbox = new JCheckBox("Bit 2 set", (data & 4) != 0);
             return ei;
         }
         if (n == 3) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 3 set", (data & 8) != 0);
+            ei.checkbox = new JCheckBox("Bit 3 set", (data & 8) != 0);
             return ei;
         }
         if (n == 4) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 4 set", (data & 16) != 0);
+            ei.checkbox = new JCheckBox("Bit 4 set", (data & 16) != 0);
             return ei;
         }
         if (n == 5) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 5 set", (data & 32) != 0);
+            ei.checkbox = new JCheckBox("Bit 5 set", (data & 32) != 0);
             return ei;
         }
         if (n == 6) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 6 set", (data & 64) != 0);
+            ei.checkbox = new JCheckBox("Bit 6 set", (data & 64) != 0);
             return ei;
         }
         if (n == 7) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("Bit 7 set", (data & 128) != 0);
+            ei.checkbox = new JCheckBox("Bit 7 set", (data & 128) != 0);
             return ei;
         }
         if (n == 8) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox("One shot", oneshot);
+            ei.checkbox = new JCheckBox("One shot", oneshot);
             return ei;
         }
         return null;
@@ -172,7 +172,7 @@ class SeqGenElm extends ChipElm {
 
     public void setEditValue(int n, EditInfo ei) {
         if (n == 0) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 1;
             } else {
                 data &= ~1;
@@ -180,7 +180,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 2;
             } else {
                 data &= ~2;
@@ -188,7 +188,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 2) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 4;
             } else {
                 data &= ~4;
@@ -196,7 +196,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 3) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 8;
             } else {
                 data &= ~8;
@@ -204,7 +204,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 4) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 16;
             } else {
                 data &= ~16;
@@ -212,7 +212,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 5) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 32;
             } else {
                 data &= ~32;
@@ -220,7 +220,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 6) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 64;
             } else {
                 data &= ~64;
@@ -228,7 +228,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 7) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 data |= 128;
             } else {
                 data &= ~128;
@@ -236,7 +236,7 @@ class SeqGenElm extends ChipElm {
             setPoints();
         }
         if (n == 8) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 oneshot = true;
                 position = 8;
             } else {

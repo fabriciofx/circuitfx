@@ -23,11 +23,11 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.StringTokenizer;
+import javax.swing.JCheckBox;
 
 class CapacitorElm extends CircuitElm {
     public static final int FLAG_BACK_EULER = 2;
@@ -94,7 +94,7 @@ class CapacitorElm extends CircuitElm {
         drawThickLine(g, point1, lead1);
         setPowerColor(g, false);
         drawThickLine(g, plate1[0], plate1[1]);
-        if (sim.powerCheckItem.getState()) {
+        if (sim.powerCheckItem.isSelected()) {
             g.setColor(Color.gray);
         }
         // draw second lead and plate
@@ -108,7 +108,7 @@ class CapacitorElm extends CircuitElm {
             drawDots(g, point2, lead2, -curcount);
         }
         drawPosts(g);
-        if (sim.showValuesCheckItem.getState()) {
+        if (sim.showValuesCheckItem.isSelected()) {
             String s = getShortUnitText(capacitance, "F");
             drawValues(g, s, hs);
         }
@@ -165,7 +165,7 @@ class CapacitorElm extends CircuitElm {
         }
         if (n == 1) {
             EditInfo ei = new EditInfo("", 0, -1, -1);
-            ei.checkbox = new Checkbox(
+            ei.checkbox = new JCheckBox(
                 "Trapezoidal Approximation",
                 isTrapezoidal()
             );
@@ -179,7 +179,7 @@ class CapacitorElm extends CircuitElm {
             capacitance = ei.value;
         }
         if (n == 1) {
-            if (ei.checkbox.getState()) {
+            if (ei.checkbox.isSelected()) {
                 flags &= ~FLAG_BACK_EULER;
             } else {
                 flags |= FLAG_BACK_EULER;

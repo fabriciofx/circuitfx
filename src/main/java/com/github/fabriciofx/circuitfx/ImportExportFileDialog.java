@@ -23,8 +23,6 @@
  */
 package com.github.fabriciofx.circuitfx;
 
-import java.awt.FileDialog;
-import java.awt.Frame;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -32,9 +30,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
-class ImportExportFileDialog
-    implements ImportExportDialog {
+class ImportExportFileDialog extends JFrame implements ImportExportDialog {
     private static String circuitDump;
     private static String directory = ".";
     CirSim cframe;
@@ -90,37 +89,42 @@ class ImportExportFileDialog
     }
 
     public void execute() {
-        FileDialog fd = new FileDialog(
-            new Frame(),
-            (type == ImportExportDialog.Action.EXPORT) ? "Save File" :
-                "Open File",
-            (type == ImportExportDialog.Action.EXPORT) ? FileDialog.SAVE :
-                FileDialog.LOAD
-        );
-        fd.setDirectory(directory);
-        fd.setVisible(true);
-        String file = fd.getFile();
-        String dir = fd.getDirectory();
-        if (dir != null) {
-            directory = dir;
-        }
-        if (file == null) {
-            return;
-        }
-        System.err.println(dir + File.separator + file);
+        JFileChooser fd = new JFileChooser();
         if (type == ImportExportDialog.Action.EXPORT) {
-            try {
-                writeFile(dir + file);
-            } catch (Exception e) {
-                e.printStackTrace();
+            fd.setDialogTitle("Save File");
+            int option = fd.showSaveDialog(this);
+            fd.setVisible(true);
+            switch (option) {
+                case JFileChooser.APPROVE_OPTION:
+                    try {
+                        String file = fd.getSelectedFile().getAbsolutePath();
+                        directory = fd.getCurrentDirectory().getAbsolutePath();
+                        writeFile(file);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case JFileChooser.CANCEL_OPTION:
+                    break;
             }
         } else {
-            try {
-                String dump = readFile(dir + file);
-                circuitDump = dump;
-                cframe.readSetup(circuitDump);
-            } catch (Exception e) {
-                e.printStackTrace();
+            fd.setDialogTitle("Open File");
+            int option = fd.showOpenDialog(this);
+            fd.setVisible(true);
+            switch (option) {
+                case JFileChooser.APPROVE_OPTION:
+                    try {
+                        String file = fd.getSelectedFile().getAbsolutePath();
+                        directory = fd.getCurrentDirectory().getAbsolutePath();
+                        String dump = readFile(file);
+                        circuitDump = dump;
+                        cframe.readSetup(circuitDump);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case JFileChooser.CANCEL_OPTION:
+                    break;
             }
         }
     }

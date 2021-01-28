@@ -24,19 +24,20 @@
 package com.github.fabriciofx.circuitfx;
 
 import java.awt.Graphics;
-import java.awt.Label;
 import java.awt.Point;
-import java.awt.Scrollbar;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.util.StringTokenizer;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-class PotElm extends CircuitElm implements AdjustmentListener {
+class PotElm extends CircuitElm implements ChangeListener {
     double position, maxResistance, resistance1, resistance2;
     double current1, current2, current3;
     double curcount1, curcount2, curcount3;
-    Scrollbar slider;
-    Label label;
+    JSlider slider;
+    JLabel label;
     String sliderText;
     Point post3, corner2, arrowPoint, midpoint, arrow1, arrow2;
     Point ps3, ps4;
@@ -86,20 +87,20 @@ class PotElm extends CircuitElm implements AdjustmentListener {
     }
 
     void createSlider() {
-        sim.main.add(label = new Label(sliderText, Label.CENTER));
+        sim.main.add(label = new JLabel(sliderText, SwingConstants.CENTER));
         int value = (int) (position * 100);
-        sim.main.add(slider = new Scrollbar(
-            Scrollbar.HORIZONTAL,
-            value,
-            1,
+        sim.main.add(slider = new JSlider(
+            SwingConstants.HORIZONTAL,
             0,
-            101
+            101,
+            value
         ));
         sim.main.validate();
-        slider.addAdjustmentListener(this);
+        slider.addChangeListener(this);
     }
 
-    public void adjustmentValueChanged(AdjustmentEvent e) {
+    @Override
+    public void stateChanged(final ChangeEvent e) {
         sim.analyzeFlag = true;
         setPoints();
     }
